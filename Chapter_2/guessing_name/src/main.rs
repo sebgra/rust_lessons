@@ -15,14 +15,16 @@ fn main(){
     loop { // define infinite loop
         println!("Please input your guess.");
 
-        let mut guess = String::new();
+        let mut guess = String::new(); // Instanciate guess to the type String provided by the std library, but let it empty.
 
         io::stdin().read_line(&mut guess).expect("Failed to read line"); // Instanciate new mutable variable with an empty String object passed through reference
+                                                                        // guess will contain the typed string from the user.
+
 
         let guess: u32 = match guess.trim().parse(){// Hide previous definition of guess and bind it to whitespaces and \n trimmed user input. Str will be converted to u32 to be comprable to secret _number
 
-                Ok(num) => num,
-                Err(_) => continue,
+                Ok(num) => num, // As an enum readline has two states : Ok everything has gone well. Here num is used to evaluate the case and is return if OK.
+                Err(_) => continue, // Err something went wrong, the loop has to be continued
             };
 
         println!("You guessed : {guess}");
